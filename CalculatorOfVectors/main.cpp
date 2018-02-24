@@ -4,41 +4,39 @@ using namespace std;
 
 int main()
 {
-		double v1[2], v2[2], resv[2];
-		double res, c;
+		vector v1, v2, resv;
+		int c, res;
 		char op;
 		cout << "Enter vectors" << endl;
-		enterVectors(v1, v2);
-		cout << "Enter operation" << endl;
+		enterVectors(&v1, &v2);
+		cout << "Enter operation (+, -, *, c - multiply on constant)" << endl;
 		cin >> op;
 		switch (op) {
 		case '+':
-			addVector(v1, v2, resv);
+			addVector(&v1, &v2, &resv);
+			printresult(&resv);
 			break;
 
 		case '-':
-			substractVector(v1, v2, resv);
+			substractVector(&v1, &v2, &resv);
+			printresult(&resv);
 			break;
 
 		case 'c':
 			cout << "Enter constant" << endl;
 			cin >> c;
-			mulConVector(v1, v2, c);
-			return 0;
+			mulConVector(&v1, &v2, c);
+			break;
 
 		case '*':
-			res = multiplyVector(v1, v2);
+			res = multiplyVector(&v1, &v2);
 			cout << "Result: " << res;
-			return 0;
+			break;
 
 		default:
 			cout << "Error";
+			break;
 		}
-
-		printresult(resv);
 
 		return 0;
 }
-
-
-
