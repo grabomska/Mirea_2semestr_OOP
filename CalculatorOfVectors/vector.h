@@ -4,12 +4,18 @@
 #include "iostream"
 #include <math.h>
 
-void enterVectors(double* arr1, double* arr2);
-void printresult(double* c);
-double* addVector(double* v1, double* v2, double* r);
-double* substractVector(double* v1, double* v2, double* r);
-double multiplyVector(double* v1, double* v2);
-void mulConVector(double* v1, double* v2, double c);
+typedef struct {
+	int x;
+	int y;
+	int v[2];
+} vector;
+
+void enterVectors(vector* v1, vector* v2);
+void printresult(vector* c);
+vector* addVector(vector* v1, vector* v2, vector* r);
+vector* substractVector(vector* v1, vector* v2, vector* r);
+int multiplyVector(vector* v1, vector* v2);
+void mulConVector(vector* v1, vector* v2, int c);
 
 
 #endif /* VECTOR_H_ */
