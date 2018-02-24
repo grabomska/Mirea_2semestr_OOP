@@ -2,67 +2,69 @@
 #include "iostream"
 using namespace std;
 
-void enterVectors(double* arr1, double* arr2)
+void enterVectors(vector* v1, vector* v2)
 {
 	cout << "Enter first vector" << endl;
-	for (int i = 0; i < 2; i++)
-	{
-		cin >> arr1[i];
-	}
+	cin >> v1->x >> v1->y;
+	v1->v[0] = v1->x;
+	v1->v[1] = v1->y;
 
 	cout << "Enter second vector" << endl;
-	for (int i = 0; i < 2; i++)
-	{
-		cin >> arr2[i];
-	}
+	cin >> v2->x >> v2->y;
+	v2->v[0] = v2->x;
+	v2->v[1] = v2->y;
 
-	cout << "First vector: (" << arr1[0] << "," << arr1[1] << ")" << endl;
-	cout << "Second vector: (" << arr2[0] << "," << arr2[1] << ")" << endl;
+	cout << "First vector: ("<< v1->v[0] << ", " << v1->v[1] << ")" << endl;
+	cout << "Second vector: ("<< v2->v[0] << ", " << v2->v[1] << ")" << endl;
 }
 
 
-void printresult(double* r)
+void printresult(vector* r)
 {
-	cout << "Result vector: (" << r[0] << "," << r[1] << ")" << endl;
+	cout << "Result vector: (" << r->v[0] << "," << r->v[1] << ")" << endl;
 }
 
 
-double* addVector(double* v1, double* v2, double* r)
+vector* addVector(vector* v1, vector* v2, vector* r)
 {
+
 	for (int i = 0; i < 2; i++)
 	{
-		r[i] = v1[i] + v2[i];
+		r->v[i] = v1->v[i] + v2->v[i];
 	}
 
 	return r;
 }
 
 
-double multiplyVector(double* v1, double* v2)
+int multiplyVector(vector* v1, vector* v2)
 {
-	return (v1[0]*v2[0] + v1[1]*v2[1]);
+	int r;
+	cout << "result = " << v1->v[0] << " * " << v2->v[0] << " + " << v1->v[1] << " * " << v2->v[1] << endl;
+	r = (int)(v1->v[0]*v2->v[0] + v1->v[1]*v2->v[1]);
+	return r;
 }
 
 
-double* substractVector(double* v1, double* v2, double* r)
-{
-	for (int i = 0; i < 2; i++)
-		{
-			r[i] = v1[i] - v2[i];
-		}
-
-		return r;
-}
-
-
-void mulConVector(double* v1, double* v2, double c)
+vector* substractVector(vector* v1, vector* v2, vector* r)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		v1[i] = v1[i]*c;
-		v2[i] = v2[i]*c;
+		r->v[i] = v1->v[i] - v2->v[i];
 	}
 
-	cout << "First result vector: (" << v1[0] << "," << v1[1] << ")" << endl;
-	cout << "Second result vector: (" << v2[0] << "," << v2[1] << ")" << endl;
+	return r;
+}
+
+
+void mulConVector(vector* v1, vector* v2, int c)
+{
+	for (int i = 0; i < 2; i++)
+	{
+		v1->v[i] = v1->v[i]*c;
+		v2->v[i] = v2->v[i]*c;
+	}
+
+	cout << "First result vector: (" << v1->v[0] << "," << v1->v[1] << ")" << endl;
+	cout << "Second result vector: (" << v2->v[0] << "," << v2->v[1] << ")" << endl;
 }
